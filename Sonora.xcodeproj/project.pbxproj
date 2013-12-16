@@ -285,6 +285,7 @@
 		03FDF86815E32D8B009A54B8 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FDF85B15E32D4E009A54B8 /* Sparkle.framework */; };
 		03FDF86915E32D94009A54B8 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FDF85B15E32D4E009A54B8 /* Sparkle.framework */; };
 		86F6993C5FE244739816BDB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10314D7A429A4257993EE387 /* libPods.a */; };
+		DB981A17185EC3660047E817 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB981A16185EC3660047E817 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -818,6 +819,7 @@
 		03FDF84C15E32D4E009A54B8 /* Sparkle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sparkle.xcodeproj; path = External/Sparkle/Sparkle.xcodeproj; sourceTree = "<group>"; };
 		10314D7A429A4257993EE387 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4695956A88A843CEA204DF02 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		DB981A16185EC3660047E817 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -825,6 +827,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB981A17185EC3660047E817 /* SystemConfiguration.framework in Frameworks */,
 				03042EBC15ED4DC6002C4CA2 /* SFBAudioEngine.framework in Frameworks */,
 				03FDF86815E32D8B009A54B8 /* Sparkle.framework in Frameworks */,
 				038E793015D83950008613DB /* libcrypto.dylib in Frameworks */,
@@ -1240,6 +1243,7 @@
 		036417971388CC92003F2A21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB981A16185EC3660047E817 /* SystemConfiguration.framework */,
 				03EF453514DA1B6C00451981 /* Third Party */,
 				03EF453414DA1B5600451981 /* Apple */,
 				10314D7A429A4257993EE387 /* libPods.a */,
