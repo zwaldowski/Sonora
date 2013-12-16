@@ -31,8 +31,10 @@
 #import <SFBAudioEngine/AudioMetadata.h>
 #import <SFBAudioEngine/AttachedPicture.h>
 
+using namespace std;
+
 @implementation SNRAudioMetadata  {
-    AudioMetadata *_metadata;
+    SFB::Audio::Metadata::unique_ptr _metadata;
 }
 
 #pragma mark -
@@ -41,7 +43,7 @@
 - (id)initWithFileAtURL:(NSURL*)url
 {
     if ((self = [super init])) {
-        _metadata = AudioMetadata::CreateMetadataForURL((__bridge CFURLRef)url);
+        _metadata = SFB::Audio::Metadata::CreateMetadataForURL((__bridge CFURLRef)url);
         if (_metadata == NULL) {
             return nil;
         }
@@ -51,7 +53,7 @@
 
 - (void)dealloc
 {
-    delete _metadata;
+    _metadata.release();
     _metadata = NULL;
 }
 
@@ -409,14 +411,14 @@
 
 - (NSData*)frontCoverArtData
 {
-	std::vector<AttachedPicture *> front = _metadata->GetAttachedPicturesOfType(AttachedPicture::Type::FrontCover);
+    vector<shared_ptr<SFB::Audio::AttachedPicture>> front = _metadata->GetAttachedPicturesOfType(AttachedPicture::Type::FrontCover);
 	if (front.size()) {
-		AttachedPicture *frontArt = front.at(0);
+		shared_ptr<SFB::Audio::AttachedPicture> frontArt = front.at(0);
 		return (__bridge NSData*)frontArt->GetData();
 	} else {
-		std::vector<AttachedPicture *> all = _metadata->GetAttachedPictures();
+        vector<shared_ptr<SFB::Audio::AttachedPicture>> all = _metadata->GetAttachedPictures();
 		if (all.size()) {
-			AttachedPicture *art = all.at(0);
+			shared_ptr<SFB::Audio::AttachedPicture> art = all.at(0);
 			return (__bridge NSData*)art->GetData();
 		}
 	}
@@ -425,10 +427,10 @@
 
 - (void)setFrontCoverArtData:(NSData *)frontCoverArtData
 {
+    //SFB::Audio::AttachedPicture::AttachedPicture(CFDataRef data, AttachedPicture::Type type, CFStringRef description)
+
 	_metadata->RemoveAttachedPicturesOfType(AttachedPicture::Type::FrontCover);
-	AttachedPicture *picture = new AttachedPicture;
-	picture->SetType(AttachedPicture::Type::FrontCover);
-	picture->SetData((__bridge CFDataRef)frontCoverArtData);
+    shared_ptr<SFB::Audio::AttachedPicture> picture( new SFB::Audio::AttachedPicture((__bridge CFDataRef)frontCoverArtData, AttachedPicture::Type::FrontCover, NULL) );
 	_metadata->AttachPicture(picture);
 }
 

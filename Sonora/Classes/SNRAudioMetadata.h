@@ -28,9 +28,6 @@
  *  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-struct AudioMetadata;
-typedef struct AudioMetadata AudioMetadata;
-
 @interface SNRAudioMetadata : NSObject
 - (id)initWithFileAtURL:(NSURL*)url;
 + (NSArray*)supportedFileExtensions;

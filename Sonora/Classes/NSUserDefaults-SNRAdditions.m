@@ -47,7 +47,6 @@ static NSString* const kUserDefaultsLibraryBookmarkKey = @"libraryBookmark";
 static NSString* const kUserDefaultsiTunesBookmarkKey = @"iTunesBookmark";
 static NSString* const kUserDefaultsFirstImportKey = @"firstImport";
 static NSString* const kUserDefaultsFirstMetadataiTunesKey = @"firstMetadataiTunes";
-static NSString* const kUserDefaultsMemoryInputSourceKey = @"useMemoryInputSource";
 
 @implementation NSUserDefaults (SNRAdditions)
 - (NSString*)lastFMUsername
@@ -209,13 +208,4 @@ static NSString* const kUserDefaultsMemoryInputSourceKey = @"useMemoryInputSourc
     }
 }
 
-- (BOOL)useMemoryInputSource
-{
-    return [self boolForKey:kUserDefaultsMemoryInputSourceKey];
-}
-
-- (void)setUseMemoryInputSource:(BOOL)memoryInputSource
-{
-    [self setBool:memoryInputSource forKey:kUserDefaultsMemoryInputSourceKey];
-}
 @end

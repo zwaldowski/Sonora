@@ -52,8 +52,6 @@ enum {
     ePlayerFlagDecodingFinished         = 1 << 3
 };
 
-volatile static uint32_t _playerFlags = 0;
-
 static AudioObjectPropertyAddress sOutputAudioAddress = {
     kAudioHardwarePropertyDefaultSystemOutputDevice,
     kAudioObjectPropertyScopeGlobal,
@@ -62,26 +60,6 @@ static AudioObjectPropertyAddress sOutputAudioAddress = {
 
 #pragma mark -
 #pragma mark Callbacks
-
-static void renderingStarted(void *context, const AudioDecoder *decoder)
-{
-	OSAtomicTestAndSetBarrier(7 /* ePlayerFlagRenderingStarted */, &_playerFlags);
-}
-
-static void renderingFinished(void *context, const AudioDecoder *decoder)
-{
-	OSAtomicTestAndSetBarrier(6 /* ePlayerFlagRenderingFinished */, &_playerFlags);
-}
-
-static void decodingStarted(void *context, const AudioDecoder *decoder)
-{
-    OSAtomicTestAndSetBarrier(5 /* ePlayerFlagDecodingStarted */, &_playerFlags);
-}
-
-static void decodingFinished(void *context, const AudioDecoder *decoder)
-{
-    OSAtomicTestAndSetBarrier(4 /* ePlayerFlaDecodingFinished */, &_playerFlags);
-}
 
 static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inNumberAddresses, const AudioObjectPropertyAddress inAddresses[], void* refcon)
 {
@@ -96,9 +74,10 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 }
 
 @implementation SNRAudioPlayer  {
-    AudioPlayer *_player;
+    SFB::Audio::Player *_player;
     NSTimer *_renderTimer;
     AudioUnit _equalizer;
+    volatile uint32_t _playerFlags;
 }
 @synthesize delegate = _delegate;
 
@@ -108,12 +87,27 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 - (id)init
 {
     if ((self = [super init])) {
-        _player = new AudioPlayer;
+        _player = new SFB::Audio::Player;
+        _player->SetRenderingStartedBlock(^(const SFB::Audio::Decoder &decoder) {
+            OSAtomicTestAndSetBarrier(7 /* ePlayerFlagRenderingStarted */, &_playerFlags);
+        });
+        _player->SetRenderingFinishedBlock(^(const SFB::Audio::Decoder &decoder) {
+            OSAtomicTestAndSetBarrier(6 /* ePlayerFlagRenderingFinished */, &_playerFlags);
+        });
+        _player->SetDecodingStartedBlock(^(const SFB::Audio::Decoder &decoder) {
+            OSAtomicTestAndSetBarrier(5 /* ePlayerFlagDecodingStarted */, &_playerFlags);
+        });
+        _player->SetDecodingFinishedBlock(^(const SFB::Audio::Decoder &decoder) {
+            OSAtomicTestAndSetBarrier(4 /* ePlayerFlaDecodingFinished */, &_playerFlags);
+        });
+        
         _player->AddEffect(kAudioUnitSubType_GraphicEQ, kAudioUnitManufacturer_Apple, 0, 0, &_equalizer);
         AudioUnitSetParameter(_equalizer, 10000, kAudioUnitScope_Global, 0, 0.0, 0); // 10 band EQ
         AudioObjectAddPropertyListener(kAudioObjectSystemObject, &sOutputAudioAddress, systemOutputDeviceDidChange, (__bridge void*)self);
         AudioDecoder::SetAutomaticallyOpenDecoders(true);
+        
         self.volume = 1.0;
+        
         _renderTimer = [NSTimer timerWithTimeInterval:0.5f target:self selector:@selector(renderTimerFired:) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_renderTimer forMode:NSRunLoopCommonModes];
     }
@@ -300,25 +294,7 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 
 - (BOOL)enqueueURL:(NSURL*)url
 {
-    BOOL useMemoryInputSource = [[NSUserDefaults standardUserDefaults] useMemoryInputSource];
-    InputSource *inputSource = InputSource::CreateInputSourceForURL((__bridge CFURLRef)url, useMemoryInputSource ? InputSourceFlagLoadFilesInMemory : 0, nullptr);
-    if (inputSource == nullptr) {
-        return NO;
-    }
-	AudioDecoder *decoder = AudioDecoder::CreateDecoderForInputSource(inputSource);
-	if (decoder == nullptr) { 
-        delete inputSource, inputSource = nullptr;
-        return NO;
-    }
-	decoder->SetRenderingStartedCallback(renderingStarted, (__bridge void*)self);
-	decoder->SetRenderingFinishedCallback(renderingFinished, (__bridge void*)self);
-    decoder->SetDecodingStartedCallback(decodingStarted, (__bridge void*)self);
-    decoder->SetDecodingFinishedCallback(decodingFinished, (__bridge void*)self);
-	if ((_player->Enqueue(decoder)) == false) {
-		delete decoder, decoder = nullptr;
-        return NO;
-	}
-    return YES;
+    return (BOOL)_player->Enqueue((__bridge CFURLRef)url);
 }
 
 - (BOOL)clearEnqueuedTracks

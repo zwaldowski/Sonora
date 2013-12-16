@@ -44,6 +44,5 @@
 @property (nonatomic, copy) NSString *libraryPath;
 @property (nonatomic, assign) BOOL firstImport;
 @property (nonatomic, assign) BOOL firstMetadataiTunes;
-@property (nonatomic, assign) BOOL useMemoryInputSource;
 - (void)showFirstMetadataiTunesAlert;
 @end

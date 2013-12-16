@@ -21,8 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		03042EBC15ED4DC6002C4CA2 /* SFBAudioEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03042EB315ED4DB1002C4CA2 /* SFBAudioEngine.framework */; };
-		03042EBD15ED4DD1002C4CA2 /* SFBAudioEngine.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03042EB315ED4DB1002C4CA2 /* SFBAudioEngine.framework */; };
 		0305D67114D87ECD001FFF15 /* SNRMetadataTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0305D67014D87ECD001FFF15 /* SNRMetadataTextFieldCell.m */; };
 		0305D67414D8B2CB001FFF15 /* SNRClickActionTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0305D67314D8B2CB001FFF15 /* SNRClickActionTextField.m */; };
 		03071D1414EE153E009478D8 /* NSDate+SNRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03071D1314EE153E009478D8 /* NSDate+SNRAdditions.m */; };
@@ -286,6 +284,8 @@
 		03FDF86915E32D94009A54B8 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FDF85B15E32D4E009A54B8 /* Sparkle.framework */; };
 		86F6993C5FE244739816BDB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10314D7A429A4257993EE387 /* libPods.a */; };
 		DB981A17185EC3660047E817 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB981A16185EC3660047E817 /* SystemConfiguration.framework */; };
+		DB981A3C185EC9650047E817 /* SFBAudioEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03042EB315ED4DB1002C4CA2 /* SFBAudioEngine.framework */; };
+		DB981A3D185EC96D0047E817 /* SFBAudioEngine.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03042EB315ED4DB1002C4CA2 /* SFBAudioEngine.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -302,27 +302,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 3252E83B10CC9E4500F1AA23;
 			remoteInfo = SimplePlayer;
-		};
-		03042EB615ED4DB1002C4CA2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03042EA615ED4DB1002C4CA2 /* SFBAudioEngine.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 32AEB2701409AC30001F9A60;
-			remoteInfo = SFBAudioEngine;
-		};
-		03042EB815ED4DB1002C4CA2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03042EA615ED4DB1002C4CA2 /* SFBAudioEngine.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 32AEB3041409BE48001F9A60;
-			remoteInfo = "SimplePlayer-iOS";
-		};
-		03042EBA15ED4DBF002C4CA2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03042EA615ED4DB1002C4CA2 /* SFBAudioEngine.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 32C212D41091116D00BA2493;
-			remoteInfo = SFBAudioEngine.framework;
 		};
 		0347F30614DCC82600E8E5FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -387,6 +366,13 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = Sparkle;
 		};
+		DB981A3A185EC94C0047E817 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03042EA615ED4DB1002C4CA2 /* SFBAudioEngine.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 32C212D41091116D00BA2493;
+			remoteInfo = SFBAudioEngine.framework;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -396,8 +382,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				03042EBD15ED4DD1002C4CA2 /* SFBAudioEngine.framework in CopyFiles */,
 				03FDF86915E32D94009A54B8 /* Sparkle.framework in CopyFiles */,
+				DB981A3D185EC96D0047E817 /* SFBAudioEngine.framework in CopyFiles */,
 				038E796215D83E6F008613DB /* Growl.framework in CopyFiles */,
 				0347F30C14DCC83400E8E5FC /* SNRHUDKit.framework in CopyFiles */,
 			);
@@ -827,8 +813,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB981A3C185EC9650047E817 /* SFBAudioEngine.framework in Frameworks */,
 				DB981A17185EC3660047E817 /* SystemConfiguration.framework in Frameworks */,
-				03042EBC15ED4DC6002C4CA2 /* SFBAudioEngine.framework in Frameworks */,
 				03FDF86815E32D8B009A54B8 /* Sparkle.framework in Frameworks */,
 				038E793015D83950008613DB /* libcrypto.dylib in Frameworks */,
 				038E792E15D8390F008613DB /* Security.framework in Frameworks */,
@@ -853,8 +839,6 @@
 			children = (
 				03042EB315ED4DB1002C4CA2 /* SFBAudioEngine.framework */,
 				03042EB515ED4DB1002C4CA2 /* SimplePlayer.app */,
-				03042EB715ED4DB1002C4CA2 /* libSFBAudioEngine.a */,
-				03042EB915ED4DB1002C4CA2 /* SimplePlayer-iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1765,7 +1749,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				03042EBB15ED4DBF002C4CA2 /* PBXTargetDependency */,
+				DB981A3B185EC94C0047E817 /* PBXTargetDependency */,
 				03FDF86715E32D85009A54B8 /* PBXTargetDependency */,
 				0347F30B14DCC82B00E8E5FC /* PBXTargetDependency */,
 			);
@@ -1780,7 +1764,7 @@
 		0364178B1388CC90003F2A21 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Sonora;
 			};
 			buildConfigurationList = 0364178E1388CC90003F2A21 /* Build configuration list for PBXProject "Sonora" */;
@@ -1828,20 +1812,6 @@
 			fileType = wrapper.application;
 			path = SimplePlayer.app;
 			remoteRef = 03042EB415ED4DB1002C4CA2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		03042EB715ED4DB1002C4CA2 /* libSFBAudioEngine.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSFBAudioEngine.a;
-			remoteRef = 03042EB615ED4DB1002C4CA2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		03042EB915ED4DB1002C4CA2 /* SimplePlayer-iOS.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "SimplePlayer-iOS.app";
-			remoteRef = 03042EB815ED4DB1002C4CA2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		0347F30714DCC82600E8E5FC /* SNRHUDKit.framework */ = {
@@ -2205,11 +2175,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		03042EBB15ED4DBF002C4CA2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SFBAudioEngine.framework;
-			targetProxy = 03042EBA15ED4DBF002C4CA2 /* PBXContainerItemProxy */;
-		};
 		0347F30B14DCC82B00E8E5FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SNRHUDKit;
@@ -2219,6 +2184,11 @@
 			isa = PBXTargetDependency;
 			name = Sparkle;
 			targetProxy = 03FDF86615E32D85009A54B8 /* PBXContainerItemProxy */;
+		};
+		DB981A3B185EC94C0047E817 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SFBAudioEngine.framework;
+			targetProxy = DB981A3A185EC94C0047E817 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2342,7 +2312,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2354,14 +2323,13 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREPROCESS = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -2371,20 +2339,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREPROCESS = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -2393,10 +2359,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4695956A88A843CEA204DF02 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ARC_MIGRATION = donothing;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "";
@@ -2406,8 +2371,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/External\"",
-					"\"$(SRCROOT)/External/SFBAudioEngine/Build/Debug\"",
-					"\"$(SRCROOT)/External/SFBAudioEngine/Build/Products/Debug\"",
 					"\"$(SRCROOT)/External/SFBAudioEngine/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2417,19 +2380,11 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Sonora/Sonora-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SDKROOT)/usr/lib/system\"",
-				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SYMROOT = build/debug;
-				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2438,10 +2393,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4695956A88A843CEA204DF02 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ARC_MIGRATION = donothing;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "";
@@ -2451,8 +2405,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/External\"",
-					"\"$(SRCROOT)/External/SFBAudioEngine/Build/Debug\"",
-					"\"$(SRCROOT)/External/SFBAudioEngine/Build/Products/Debug\"",
 					"\"$(SRCROOT)/External/SFBAudioEngine/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2462,19 +2414,11 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Sonora/Sonora-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SDKROOT)/usr/lib/system\"",
-				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
 				SYMROOT = build/debug;
-				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
