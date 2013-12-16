@@ -113,7 +113,7 @@
 
 - (IBAction)clickedCompilation:(id)sender
 {
-    if ([[sender selectedCell] state] == NSMixedState){
+    if ([(NSButton *)[sender selectedCell] state] == NSMixedState){
         [[sender selectedCell] performClick:sender];
     }
 }

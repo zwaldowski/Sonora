@@ -89,24 +89,29 @@ static NSString* const kImageQueuePlaceholder = @"default-queue-artwork";
         _shadowLayer.shouldRasterize = YES;
         _shineLayer = [SNRQueueShineLayer layer];
         _textLayer = [SNRQueueTextLayer layer];
-        __weak SNRQueueViewCell *weakSelf = self;
+        
+        __weak typeof(self) weakSelf = self;
         [_textLayer setScrubbingBlock:^(SNRQueueTextLayer *layer) {
-            SNRQueueViewCell *strongSelf = weakSelf;
+            typeof(weakSelf) strongSelf = weakSelf;
             [strongSelf.queueController seekToTime:layer.doubleValue];
             strongSelf.hoverTime = layer.doubleValue;
         }];
         [_textLayer setHoverBlock:^(SNRQueueTextLayer *layer, double hoverValue) {
-            SNRQueueViewCell *strongSelf = weakSelf;
+            typeof(weakSelf) strongSelf = weakSelf;
             strongSelf.hoverTime = hoverValue;
         }];
+        
         _playLayer = [SNRQueuePlayLayer layer];
         [_playLayer setMouseUpBlock:^(SNRQueuePlayLayer *layer) {
-            [self.queueController playPause];
+            typeof(weakSelf) strongSelf = weakSelf;
+            [strongSelf.queueController playPause];
         }];
         _playLayer.hidden = YES;
+        
         _highlightLayer = [OEGridLayer layer];
         _highlightLayer.cornerRadius = kQueueGridViewCellCornerRadius;
         _highlightLayer.opaque = NO;
+        
         [self addSublayer:_shadowLayer];
         [self addSublayer:_imageLayer];
         [self addSublayer:_shineLayer];
