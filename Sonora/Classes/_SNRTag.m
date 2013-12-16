@@ -3,17 +3,22 @@
 
 #import "_SNRTag.h"
 
+
 const struct SNRTagAttributes SNRTagAttributes = {
 	.name = @"name",
 	.ranking = @"ranking",
 };
 
+
+
 const struct SNRTagRelationships SNRTagRelationships = {
 	.songs = @"songs",
 };
 
-const struct SNRTagFetchedProperties SNRTagFetchedProperties = {
-};
+
+
+
+
 
 @implementation SNRTagID
 @end
@@ -38,12 +43,13 @@ const struct SNRTagFetchedProperties SNRTagFetchedProperties = {
 	return (SNRTagID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"rankingValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"ranking"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
@@ -68,9 +74,11 @@ const struct SNRTagFetchedProperties SNRTagFetchedProperties = {
 	return [result intValue];
 }
 
+
 - (void)setRankingValue:(int32_t)value_ {
-	[self setRanking:[NSNumber numberWithInt:value_]];
+	[self setRanking:@(value_)];
 }
+
 
 - (int32_t)primitiveRankingValue {
 	NSNumber *result = [self primitiveRanking];
@@ -78,7 +86,7 @@ const struct SNRTagFetchedProperties SNRTagFetchedProperties = {
 }
 
 - (void)setPrimitiveRankingValue:(int32_t)value_ {
-	[self setPrimitiveRanking:[NSNumber numberWithInt:value_]];
+	[self setPrimitiveRanking:@(value_)];
 }
 
 
@@ -104,3 +112,7 @@ const struct SNRTagFetchedProperties SNRTagFetchedProperties = {
 
 
 @end
+
+
+
+

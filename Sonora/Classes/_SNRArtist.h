@@ -4,20 +4,28 @@
 #import <CoreData/CoreData.h>
 #import "SNRManagedObject.h"
 
+
 extern const struct SNRArtistAttributes {
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *ranking;
 	__unsafe_unretained NSString *sortingName;
 } SNRArtistAttributes;
 
+
+
 extern const struct SNRArtistRelationships {
 	__unsafe_unretained NSString *albums;
 } SNRArtistRelationships;
 
-extern const struct SNRArtistFetchedProperties {
-} SNRArtistFetchedProperties;
+
+
+
+
 
 @class SNRAlbum;
+
+
+
 
 
 
@@ -35,7 +43,9 @@ extern const struct SNRArtistFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -43,19 +53,25 @@ extern const struct SNRArtistFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* ranking;
 
 
-@property int32_t rankingValue;
+
+
+@property (atomic) int32_t rankingValue;
 - (int32_t)rankingValue;
 - (void)setRankingValue:(int32_t)value_;
+
 
 //- (BOOL)validateRanking:(id*)value_ error:(NSError**)error_;
 
 
 
 
+
 @property (nonatomic, strong) NSString* sortingName;
+
 
 
 //- (BOOL)validateSortingName:(id*)value_ error:(NSError**)error_;
@@ -64,7 +80,7 @@ extern const struct SNRArtistFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet* albums;
+@property (nonatomic, strong) NSSet *albums;
 
 - (NSMutableSet*)albumsSet;
 
@@ -74,14 +90,14 @@ extern const struct SNRArtistFetchedProperties {
 
 @end
 
-@interface _SNRArtist (CoreDataGeneratedAccessors)
 
+@interface _SNRArtist (AlbumsCoreDataGeneratedAccessors)
 - (void)addAlbums:(NSSet*)value_;
 - (void)removeAlbums:(NSSet*)value_;
 - (void)addAlbumsObject:(SNRAlbum*)value_;
 - (void)removeAlbumsObject:(SNRAlbum*)value_;
-
 @end
+
 
 @interface _SNRArtist (CoreDataGeneratedPrimitiveAccessors)
 

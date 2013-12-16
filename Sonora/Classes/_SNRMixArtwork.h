@@ -4,19 +4,26 @@
 #import <CoreData/CoreData.h>
 #import "SNRManagedObject.h"
 
+
 extern const struct SNRMixArtworkAttributes {
 	__unsafe_unretained NSString *data;
 	__unsafe_unretained NSString *generated;
 } SNRMixArtworkAttributes;
 
+
+
 extern const struct SNRMixArtworkRelationships {
 	__unsafe_unretained NSString *mix;
 } SNRMixArtworkRelationships;
 
-extern const struct SNRMixArtworkFetchedProperties {
-} SNRMixArtworkFetchedProperties;
+
+
+
+
 
 @class SNRMix;
+
+
 
 
 
@@ -33,7 +40,9 @@ extern const struct SNRMixArtworkFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSData* data;
+
 
 
 //- (BOOL)validateData:(id*)value_ error:(NSError**)error_;
@@ -41,12 +50,16 @@ extern const struct SNRMixArtworkFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* generated;
 
 
-@property BOOL generatedValue;
+
+
+@property (atomic) BOOL generatedValue;
 - (BOOL)generatedValue;
 - (void)setGeneratedValue:(BOOL)value_;
+
 
 //- (BOOL)validateGenerated:(id*)value_ error:(NSError**)error_;
 
@@ -54,7 +67,7 @@ extern const struct SNRMixArtworkFetchedProperties {
 
 
 
-@property (nonatomic, strong) SNRMix* mix;
+@property (nonatomic, strong) SNRMix *mix;
 
 //- (BOOL)validateMix:(id*)value_ error:(NSError**)error_;
 
@@ -64,9 +77,7 @@ extern const struct SNRMixArtworkFetchedProperties {
 
 @end
 
-@interface _SNRMixArtwork (CoreDataGeneratedAccessors)
 
-@end
 
 @interface _SNRMixArtwork (CoreDataGeneratedPrimitiveAccessors)
 

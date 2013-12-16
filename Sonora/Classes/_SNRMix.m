@@ -3,6 +3,7 @@
 
 #import "_SNRMix.h"
 
+
 const struct SNRMixAttributes SNRMixAttributes = {
 	.dateModified = @"dateModified",
 	.iTunesPersistentID = @"iTunesPersistentID",
@@ -11,14 +12,18 @@ const struct SNRMixAttributes SNRMixAttributes = {
 	.ranking = @"ranking",
 };
 
+
+
 const struct SNRMixRelationships SNRMixRelationships = {
 	.artwork = @"artwork",
 	.songs = @"songs",
 	.thumbnailArtwork = @"thumbnailArtwork",
 };
 
-const struct SNRMixFetchedProperties SNRMixFetchedProperties = {
-};
+
+
+
+
 
 @implementation SNRMixID
 @end
@@ -43,16 +48,18 @@ const struct SNRMixFetchedProperties SNRMixFetchedProperties = {
 	return (SNRMixID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"popularityValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"popularity"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"rankingValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"ranking"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
@@ -91,9 +98,11 @@ const struct SNRMixFetchedProperties SNRMixFetchedProperties = {
 	return [result doubleValue];
 }
 
+
 - (void)setPopularityValue:(double)value_ {
-	[self setPopularity:[NSNumber numberWithDouble:value_]];
+	[self setPopularity:@(value_)];
 }
+
 
 - (double)primitivePopularityValue {
 	NSNumber *result = [self primitivePopularity];
@@ -101,7 +110,7 @@ const struct SNRMixFetchedProperties SNRMixFetchedProperties = {
 }
 
 - (void)setPrimitivePopularityValue:(double)value_ {
-	[self setPrimitivePopularity:[NSNumber numberWithDouble:value_]];
+	[self setPrimitivePopularity:@(value_)];
 }
 
 
@@ -117,9 +126,11 @@ const struct SNRMixFetchedProperties SNRMixFetchedProperties = {
 	return [result intValue];
 }
 
+
 - (void)setRankingValue:(int32_t)value_ {
-	[self setRanking:[NSNumber numberWithInt:value_]];
+	[self setRanking:@(value_)];
 }
+
 
 - (int32_t)primitiveRankingValue {
 	NSNumber *result = [self primitiveRanking];
@@ -127,7 +138,7 @@ const struct SNRMixFetchedProperties SNRMixFetchedProperties = {
 }
 
 - (void)setPrimitiveRankingValue:(int32_t)value_ {
-	[self setPrimitiveRanking:[NSNumber numberWithInt:value_]];
+	[self setPrimitiveRanking:@(value_)];
 }
 
 
@@ -161,3 +172,22 @@ const struct SNRMixFetchedProperties SNRMixFetchedProperties = {
 
 
 @end
+
+
+@implementation _SNRMix (SongsCoreDataGeneratedAccessors)
+- (void)addSongs:(NSOrderedSet*)value_ {
+	[self.songsSet unionOrderedSet:value_];
+}
+- (void)removeSongs:(NSOrderedSet*)value_ {
+	[self.songsSet minusOrderedSet:value_];
+}
+- (void)addSongsObject:(SNRSong*)value_ {
+	[self.songsSet addObject:value_];
+}
+- (void)removeSongsObject:(SNRSong*)value_ {
+	[self.songsSet removeObject:value_];
+}
+@end
+
+
+

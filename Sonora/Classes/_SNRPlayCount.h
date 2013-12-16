@@ -4,18 +4,24 @@
 #import <CoreData/CoreData.h>
 #import "SNRManagedObject.h"
 
+
 extern const struct SNRPlayCountAttributes {
 	__unsafe_unretained NSString *date;
 } SNRPlayCountAttributes;
+
+
 
 extern const struct SNRPlayCountRelationships {
 	__unsafe_unretained NSString *song;
 } SNRPlayCountRelationships;
 
-extern const struct SNRPlayCountFetchedProperties {
-} SNRPlayCountFetchedProperties;
+
+
+
+
 
 @class SNRSong;
+
 
 
 
@@ -31,7 +37,9 @@ extern const struct SNRPlayCountFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSDate* date;
+
 
 
 //- (BOOL)validateDate:(id*)value_ error:(NSError**)error_;
@@ -40,7 +48,7 @@ extern const struct SNRPlayCountFetchedProperties {
 
 
 
-@property (nonatomic, strong) SNRSong* song;
+@property (nonatomic, strong) SNRSong *song;
 
 //- (BOOL)validateSong:(id*)value_ error:(NSError**)error_;
 
@@ -50,9 +58,7 @@ extern const struct SNRPlayCountFetchedProperties {
 
 @end
 
-@interface _SNRPlayCount (CoreDataGeneratedAccessors)
 
-@end
 
 @interface _SNRPlayCount (CoreDataGeneratedPrimitiveAccessors)
 

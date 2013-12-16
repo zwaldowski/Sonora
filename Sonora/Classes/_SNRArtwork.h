@@ -4,18 +4,24 @@
 #import <CoreData/CoreData.h>
 #import "SNRManagedObject.h"
 
+
 extern const struct SNRArtworkAttributes {
 	__unsafe_unretained NSString *data;
 } SNRArtworkAttributes;
+
+
 
 extern const struct SNRArtworkRelationships {
 	__unsafe_unretained NSString *album;
 } SNRArtworkRelationships;
 
-extern const struct SNRArtworkFetchedProperties {
-} SNRArtworkFetchedProperties;
+
+
+
+
 
 @class SNRAlbum;
+
 
 
 
@@ -31,7 +37,9 @@ extern const struct SNRArtworkFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSData* data;
+
 
 
 //- (BOOL)validateData:(id*)value_ error:(NSError**)error_;
@@ -40,7 +48,7 @@ extern const struct SNRArtworkFetchedProperties {
 
 
 
-@property (nonatomic, strong) SNRAlbum* album;
+@property (nonatomic, strong) SNRAlbum *album;
 
 //- (BOOL)validateAlbum:(id*)value_ error:(NSError**)error_;
 
@@ -50,9 +58,7 @@ extern const struct SNRArtworkFetchedProperties {
 
 @end
 
-@interface _SNRArtwork (CoreDataGeneratedAccessors)
 
-@end
 
 @interface _SNRArtwork (CoreDataGeneratedPrimitiveAccessors)
 

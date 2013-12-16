@@ -3,17 +3,22 @@
 
 #import "_SNRMixThumbnailArtwork.h"
 
+
 const struct SNRMixThumbnailArtworkAttributes SNRMixThumbnailArtworkAttributes = {
 	.data = @"data",
 	.generated = @"generated",
 };
 
+
+
 const struct SNRMixThumbnailArtworkRelationships SNRMixThumbnailArtworkRelationships = {
 	.mix = @"mix",
 };
 
-const struct SNRMixThumbnailArtworkFetchedProperties SNRMixThumbnailArtworkFetchedProperties = {
-};
+
+
+
+
 
 @implementation SNRMixThumbnailArtworkID
 @end
@@ -38,12 +43,13 @@ const struct SNRMixThumbnailArtworkFetchedProperties SNRMixThumbnailArtworkFetch
 	return (SNRMixThumbnailArtworkID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"generatedValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"generated"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
@@ -68,9 +74,11 @@ const struct SNRMixThumbnailArtworkFetchedProperties SNRMixThumbnailArtworkFetch
 	return [result boolValue];
 }
 
+
 - (void)setGeneratedValue:(BOOL)value_ {
-	[self setGenerated:[NSNumber numberWithBool:value_]];
+	[self setGenerated:@(value_)];
 }
+
 
 - (BOOL)primitiveGeneratedValue {
 	NSNumber *result = [self primitiveGenerated];
@@ -78,7 +86,7 @@ const struct SNRMixThumbnailArtworkFetchedProperties SNRMixThumbnailArtworkFetch
 }
 
 - (void)setPrimitiveGeneratedValue:(BOOL)value_ {
-	[self setPrimitiveGenerated:[NSNumber numberWithBool:value_]];
+	[self setPrimitiveGenerated:@(value_)];
 }
 
 
@@ -95,3 +103,7 @@ const struct SNRMixThumbnailArtworkFetchedProperties SNRMixThumbnailArtworkFetch
 
 
 @end
+
+
+
+

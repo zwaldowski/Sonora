@@ -3,16 +3,21 @@
 
 #import "_SNRThumbnailArtwork.h"
 
+
 const struct SNRThumbnailArtworkAttributes SNRThumbnailArtworkAttributes = {
 	.data = @"data",
 };
+
+
 
 const struct SNRThumbnailArtworkRelationships SNRThumbnailArtworkRelationships = {
 	.album = @"album",
 };
 
-const struct SNRThumbnailArtworkFetchedProperties SNRThumbnailArtworkFetchedProperties = {
-};
+
+
+
+
 
 @implementation SNRThumbnailArtworkID
 @end
@@ -37,7 +42,7 @@ const struct SNRThumbnailArtworkFetchedProperties SNRThumbnailArtworkFetchedProp
 	return (SNRThumbnailArtworkID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 
@@ -64,3 +69,7 @@ const struct SNRThumbnailArtworkFetchedProperties SNRThumbnailArtworkFetchedProp
 
 
 @end
+
+
+
+

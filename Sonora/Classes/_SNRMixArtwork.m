@@ -3,17 +3,22 @@
 
 #import "_SNRMixArtwork.h"
 
+
 const struct SNRMixArtworkAttributes SNRMixArtworkAttributes = {
 	.data = @"data",
 	.generated = @"generated",
 };
 
+
+
 const struct SNRMixArtworkRelationships SNRMixArtworkRelationships = {
 	.mix = @"mix",
 };
 
-const struct SNRMixArtworkFetchedProperties SNRMixArtworkFetchedProperties = {
-};
+
+
+
+
 
 @implementation SNRMixArtworkID
 @end
@@ -38,12 +43,13 @@ const struct SNRMixArtworkFetchedProperties SNRMixArtworkFetchedProperties = {
 	return (SNRMixArtworkID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"generatedValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"generated"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
@@ -68,9 +74,11 @@ const struct SNRMixArtworkFetchedProperties SNRMixArtworkFetchedProperties = {
 	return [result boolValue];
 }
 
+
 - (void)setGeneratedValue:(BOOL)value_ {
-	[self setGenerated:[NSNumber numberWithBool:value_]];
+	[self setGenerated:@(value_)];
 }
+
 
 - (BOOL)primitiveGeneratedValue {
 	NSNumber *result = [self primitiveGenerated];
@@ -78,7 +86,7 @@ const struct SNRMixArtworkFetchedProperties SNRMixArtworkFetchedProperties = {
 }
 
 - (void)setPrimitiveGeneratedValue:(BOOL)value_ {
-	[self setPrimitiveGenerated:[NSNumber numberWithBool:value_]];
+	[self setPrimitiveGenerated:@(value_)];
 }
 
 
@@ -95,3 +103,7 @@ const struct SNRMixArtworkFetchedProperties SNRMixArtworkFetchedProperties = {
 
 
 @end
+
+
+
+

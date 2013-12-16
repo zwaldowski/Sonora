@@ -3,6 +3,7 @@
 
 #import "_SNRAlbum.h"
 
+
 const struct SNRAlbumAttributes SNRAlbumAttributes = {
 	.dateModified = @"dateModified",
 	.didSearchForArtwork = @"didSearchForArtwork",
@@ -11,6 +12,8 @@ const struct SNRAlbumAttributes SNRAlbumAttributes = {
 	.ranking = @"ranking",
 };
 
+
+
 const struct SNRAlbumRelationships SNRAlbumRelationships = {
 	.artist = @"artist",
 	.artwork = @"artwork",
@@ -18,8 +21,10 @@ const struct SNRAlbumRelationships SNRAlbumRelationships = {
 	.thumbnailArtwork = @"thumbnailArtwork",
 };
 
-const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
-};
+
+
+
+
 
 @implementation SNRAlbumID
 @end
@@ -44,20 +49,23 @@ const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
 	return (SNRAlbumID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"didSearchForArtworkValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"didSearchForArtwork"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"popularityValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"popularity"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"rankingValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"ranking"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
@@ -82,9 +90,11 @@ const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
 	return [result boolValue];
 }
 
+
 - (void)setDidSearchForArtworkValue:(BOOL)value_ {
-	[self setDidSearchForArtwork:[NSNumber numberWithBool:value_]];
+	[self setDidSearchForArtwork:@(value_)];
 }
+
 
 - (BOOL)primitiveDidSearchForArtworkValue {
 	NSNumber *result = [self primitiveDidSearchForArtwork];
@@ -92,7 +102,7 @@ const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
 }
 
 - (void)setPrimitiveDidSearchForArtworkValue:(BOOL)value_ {
-	[self setPrimitiveDidSearchForArtwork:[NSNumber numberWithBool:value_]];
+	[self setPrimitiveDidSearchForArtwork:@(value_)];
 }
 
 
@@ -115,9 +125,11 @@ const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
 	return [result doubleValue];
 }
 
+
 - (void)setPopularityValue:(double)value_ {
-	[self setPopularity:[NSNumber numberWithDouble:value_]];
+	[self setPopularity:@(value_)];
 }
+
 
 - (double)primitivePopularityValue {
 	NSNumber *result = [self primitivePopularity];
@@ -125,7 +137,7 @@ const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
 }
 
 - (void)setPrimitivePopularityValue:(double)value_ {
-	[self setPrimitivePopularity:[NSNumber numberWithDouble:value_]];
+	[self setPrimitivePopularity:@(value_)];
 }
 
 
@@ -141,9 +153,11 @@ const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
 	return [result intValue];
 }
 
+
 - (void)setRankingValue:(int32_t)value_ {
-	[self setRanking:[NSNumber numberWithInt:value_]];
+	[self setRanking:@(value_)];
 }
+
 
 - (int32_t)primitiveRankingValue {
 	NSNumber *result = [self primitiveRanking];
@@ -151,7 +165,7 @@ const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
 }
 
 - (void)setPrimitiveRankingValue:(int32_t)value_ {
-	[self setPrimitiveRanking:[NSNumber numberWithInt:value_]];
+	[self setPrimitiveRanking:@(value_)];
 }
 
 
@@ -189,3 +203,7 @@ const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
 
 
 @end
+
+
+
+

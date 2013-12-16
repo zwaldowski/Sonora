@@ -4,6 +4,7 @@
 #import <CoreData/CoreData.h>
 #import "SNRManagedObject.h"
 
+
 extern const struct SNRMixAttributes {
 	__unsafe_unretained NSString *dateModified;
 	__unsafe_unretained NSString *iTunesPersistentID;
@@ -12,18 +13,27 @@ extern const struct SNRMixAttributes {
 	__unsafe_unretained NSString *ranking;
 } SNRMixAttributes;
 
+
+
 extern const struct SNRMixRelationships {
 	__unsafe_unretained NSString *artwork;
 	__unsafe_unretained NSString *songs;
 	__unsafe_unretained NSString *thumbnailArtwork;
 } SNRMixRelationships;
 
-extern const struct SNRMixFetchedProperties {
-} SNRMixFetchedProperties;
+
+
+
+
 
 @class SNRMixArtwork;
 @class SNRSong;
 @class SNRMixThumbnailArtwork;
+
+
+
+
+
 
 
 
@@ -43,7 +53,9 @@ extern const struct SNRMixFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSDate* dateModified;
+
 
 
 //- (BOOL)validateDateModified:(id*)value_ error:(NSError**)error_;
@@ -51,7 +63,9 @@ extern const struct SNRMixFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* iTunesPersistentID;
+
 
 
 //- (BOOL)validateITunesPersistentID:(id*)value_ error:(NSError**)error_;
@@ -59,7 +73,9 @@ extern const struct SNRMixFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -67,14 +83,19 @@ extern const struct SNRMixFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* popularity;
 
 
-@property double popularityValue;
+
+
+@property (atomic) double popularityValue;
 - (double)popularityValue;
 - (void)setPopularityValue:(double)value_;
 
+
 //- (BOOL)validatePopularity:(id*)value_ error:(NSError**)error_;
+
 
 
 
@@ -82,9 +103,12 @@ extern const struct SNRMixFetchedProperties {
 @property (nonatomic, strong) NSNumber* ranking;
 
 
-@property int32_t rankingValue;
+
+
+@property (atomic) int32_t rankingValue;
 - (int32_t)rankingValue;
 - (void)setRankingValue:(int32_t)value_;
+
 
 //- (BOOL)validateRanking:(id*)value_ error:(NSError**)error_;
 
@@ -92,21 +116,21 @@ extern const struct SNRMixFetchedProperties {
 
 
 
-@property (nonatomic, strong) SNRMixArtwork* artwork;
+@property (nonatomic, strong) SNRMixArtwork *artwork;
 
 //- (BOOL)validateArtwork:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSOrderedSet* songs;
+@property (nonatomic, strong) NSOrderedSet *songs;
 
 - (NSMutableOrderedSet*)songsSet;
 
 
 
 
-@property (nonatomic, strong) SNRMixThumbnailArtwork* thumbnailArtwork;
+@property (nonatomic, strong) SNRMixThumbnailArtwork *thumbnailArtwork;
 
 //- (BOOL)validateThumbnailArtwork:(id*)value_ error:(NSError**)error_;
 
@@ -116,14 +140,14 @@ extern const struct SNRMixFetchedProperties {
 
 @end
 
-@interface _SNRMix (CoreDataGeneratedAccessors)
 
+@interface _SNRMix (SongsCoreDataGeneratedAccessors)
 - (void)addSongs:(NSOrderedSet*)value_;
 - (void)removeSongs:(NSOrderedSet*)value_;
 - (void)addSongsObject:(SNRSong*)value_;
 - (void)removeSongsObject:(SNRSong*)value_;
-
 @end
+
 
 @interface _SNRMix (CoreDataGeneratedPrimitiveAccessors)
 
